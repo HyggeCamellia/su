@@ -5,7 +5,7 @@ import Ch from './Hch/Ch';
 import Yn from './Syn/Yn';
 import Wfy from './Wfy/Aaaa';
 import Lhq from './Lhq/Lh';
-
+import Lyt from './Lyt/Ly';
 const App = () => {
 
   return (
@@ -15,6 +15,7 @@ const App = () => {
       <Yn />
       <Wfy />
       <Lhq />
+      <Lyt />
     </>
   );
 }
