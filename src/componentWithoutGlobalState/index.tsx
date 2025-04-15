@@ -1,6 +1,7 @@
 import Compo1 from "./compo1"
 import Compo2 from "./compo2"
 import Compo3 from "./compo3"
+import Hch from "./Hch"
 
 const ComponentWithoutGlobalState = () => {
     return (
@@ -11,6 +12,7 @@ const ComponentWithoutGlobalState = () => {
                     <Compo1 />
                     <Compo2 />
                     <Compo3 />
+                    <Hch />
                 </div>
             </div>
         </>
