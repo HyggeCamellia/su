@@ -1,25 +1,46 @@
-import React from'react';
-import useGlobalStore from './globalStore';
+import React, { createContext, useState } from "react";
 
-function App() {
-  const { isLoggedIn, login, logout } = useGlobalStore();
+// 创建上下文
+export const GlobalModalContext = createContext<{
+  isModalOpen: boolean;
+  openModal: () => void;
+  closeModal: () => void;
+}>({
+  isModalOpen: false,
+  openModal: () => {},
+  closeModal: () => {},
+});
+
+const Hq: React.FC = () => {
+  // 定义状态和相关方法
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const openModal = () => setIsModalOpen(true);
+  const closeModal = () => setIsModalOpen(false);
 
   return (
-    <div>
-      <h1>全局登录状态示例</h1>
-      {isLoggedIn? (
-        <div>
-          <p>你已登录</p>
-          <button onClick={logout}>登出</button>
-        </div>
-      ) : (
-        <div>
-          <p>你未登录</p>
-          <button onClick={login}>登录</button>
-        </div>
-      )}
-    </div>
+    <GlobalModalContext.Provider
+      value={{ isModalOpen, openModal, closeModal }}
+    >
+      <div>
+        <button onClick={openModal}>打开模态框</button>
+        {isModalOpen && (
+          <div style={{
+            position: 'fixed',
+            top: '50%',
+            left: '50%',
+            transform: 'translate(-50%, -50%)',
+            backgroundColor: 'white',
+            padding: '20px',
+            border: '1px solid gray',
+            borderRadius: '5px'
+          }}>
+            <p>这是一个模态框</p>
+            <button onClick={closeModal}>关闭模态框</button>
+          </div>
+        )}
+      </div>
+    </GlobalModalContext.Provider>
   );
-}
+};
 
-export default App;
+export default Yn;
